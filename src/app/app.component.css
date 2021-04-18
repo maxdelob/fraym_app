@@ -1,29 +1,8 @@
 
-  .content {
-    display: flex;
-    height: calc(100% - 56px - 35px);
+  .container {
+    height:calc(100% - 56px - 35px);
     width: 100%;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
     background: #ffefba; 
-    background: -webkit-linear-gradient(to right, #ffefba, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffefba, #ffffff);
-  }
-
-  .instruction-container{
-    width:50%; height: 75px; 
-    margin-bottom: 20px;
-    color: #673ab7;
-    margin-top: 25px;
-  }
-  .input-container{
-    width:50%; height: 50px;
-  }
-
-  .input-form{
-    
-   
-    width: 100%;
-    height: 100%;
+    background: -webkit-linear-gradient(to right, #ffefba, #ffffff); 
+    background: linear-gradient(to right, #ffefba, #ffffff);  
   }
