@@ -47,7 +47,7 @@ export class ChartComponent implements OnInit {
     // initialize chart options:
     this.options = {
       title: {
-        text: 'End of Day US Stock Prices (dates)'
+        text: this.company.name + ' End of Day US Stock Prices (dates)'
       },
       //  tooltip: {
       //    trigger: 'axis',
