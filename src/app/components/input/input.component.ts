@@ -13,13 +13,17 @@ import { GeneralService } from 'src/app/services/general.service';
 })
 export class InputComponent implements OnInit {
   companyControl = new FormControl();
-  companies: Company[]= [{name:"Apple", ticker:'AAPL'}]
+  companies: Company[];
   companySelected : Company = {name:"", ticker:""}
-  options: string[] = ['Apple'];
+  options: string[] = [];
   filteredOptions: Observable<string[]>;
   selectedCompany: string;
   constructor(private router : Router, private generalService: GeneralService) {}
   ngOnInit(): void {
+    this.generalService.getCompanies().subscribe((res : Company[]) => {
+      this.companies = res;
+      this.options = this.companies.map(element => element.name)
+    })
     this.filteredOptions = this.filterAutoComplete()
   }
 
@@ -42,7 +46,7 @@ export class InputComponent implements OnInit {
 
   navigateToChart(){    
     this.companySelected = this.companies.filter(e => {return e.name == this.selectedCompany})[0]
-    this.generalService.setCompany(this.companySelected)
+    this.generalService.setCompanySelected(this.companySelected)
     this.router.navigateByUrl(this.companySelected.ticker);
   }
 

@@ -21,27 +21,28 @@ export class ChartComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.init()
-    if(!this.company){  // handle relaod case
-      this.generalService.setCompany(this.router.url.replace('/', ''))
-      this.init();
-    }
+    this.generalService.setCompanySelected(this.router.url.replace('/', ''))
+    this.init();
   }
 
   init(){
-    this.company = this.generalService.getCompany();
+    this.company = this.generalService.getCompanySelected();
     this.createChart();
   }
 
   createChart() {
-    // generate some random testing data:
+
+    // this.generalService.getChart(this.company.ticker).subscribe((res)=>{
+    //   console.log(res)
+    //   // this.data = res
+    // })
     this.data = [];
     this.now = new Date(1997, 9, 3);
     this.value = Math.random() * 1000;
 
-    for (let i = 0; i < 1000; i++) {
-      this.data.push(this.randomData());
-    }
+    // for (let i = 0; i < 1000; i++) {
+    //   this.data.push(this.randomData());
+    // }
 
     console.log(this.company)
     // initialize chart options:
@@ -89,22 +90,22 @@ export class ChartComponent implements OnInit {
     };
 
     // Mock dynamic data:
-    this.timer = setInterval(() => {
-      for (let i = 0; i < 5; i++) {
-        this.data.shift();
-        this.data.push(this.randomData());
-      }
+    // this.timer = setInterval(() => {
+    //   for (let i = 0; i < 5; i++) {
+    //     this.data.shift();
+    //     this.data.push(this.randomData());
+    //   }
 
-      // update series data:
-      this.updateOptions = {
-        series: [{
-          data: this.data
-        }]
-      };
-    }, 1000);
+    //   // update series data:
+    //   this.updateOptions = {
+    //     series: [{
+    //       data: this.data
+    //     }]
+    //   };
+    // }, 1000);
 
 
-    console.log(this.data);
+    // console.log(this.data);
     
 
   }

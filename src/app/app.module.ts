@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule } from '@angular/material/form-field';
@@ -34,6 +36,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule, ReactiveFormsModule,
     RouterModule.forRoot(routes),
     MatInputModule, MatAutocompleteModule, MatFormFieldModule,
