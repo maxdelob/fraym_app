@@ -17,35 +17,28 @@ export class InputComponent implements OnInit {
   companySelected : Company = {name:"", ticker:""}
   options: string[] = [];
   filteredOptions: Observable<string[]>;
-  selectedCompany: string;
   constructor(private router : Router, private generalService: GeneralService) {}
   ngOnInit(): void {
     this.generalService.getCompanies().subscribe((res : Company[]) => {
       this.companies = res;
       this.options = this.companies.map(element => element.name)
+      this.filteredOptions = this.companyControl.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
     })
-    this.filteredOptions = this.filterAutoComplete()
   }
 
-  filterAutoComplete(){
-    return this.companyControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
-
-  }
   private _filter(value: string): string[] {
-    this.filteredOptions = this.filterAutoComplete();
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
   onSelectedCompany(){
-    this.selectedCompany = this.companyControl.value
+    this.companySelected = this.companies.filter((e)=>{return e.name == this.companyControl.value})[0]
   }
 
   navigateToChart(){    
-    this.companySelected = this.companies.filter(e => {return e.name == this.selectedCompany})[0]
     this.generalService.setCompanySelected(this.companySelected)
     this.router.navigateByUrl(this.companySelected.ticker);
   }

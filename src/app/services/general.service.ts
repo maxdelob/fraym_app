@@ -14,8 +14,8 @@ export class GeneralService {
   private company:Company;
   constructor(private http: HttpClient) { }
 
-  setCompanySelected(ticker){
-    this.company = ticker;
+  setCompanySelected(c){
+    this.company = c;
     return this.company;
   }
 
@@ -27,7 +27,10 @@ export class GeneralService {
       return this.http.get(environment.url + "companies");
   }
 
-  getChart(id){
+  getChart(id):Observable<any> {
     return this.http.get(environment.url + "chart/" + id);
+  }
+  getChartDates(id){
+    return this.http.get(environment.url + "chart/" + id + '/dates');
   }
 }
