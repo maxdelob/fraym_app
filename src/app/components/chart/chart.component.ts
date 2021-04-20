@@ -31,7 +31,6 @@ export class ChartComponent implements OnInit {
   }
 
   createChart() {
-
     this.generalService.getChart(this.company.ticker).subscribe((res)=>{
       this.data = res
       this.options = new Chart(this.company.name + ' End of Day US Stock Prices (' + this.parseDate(new Date(this.dates.min)) + ' => ' + this.parseDate(new Date(this.dates.max)) + ')', this.data)

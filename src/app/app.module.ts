@@ -24,6 +24,10 @@ import { InputComponent } from './components/input/input.component';
 import { ChartComponent } from './components/chart/chart.component';
 
 
+import {init} from 'echarts';
+
+
+
 const routes: Routes = [
   {path:'', component: InputComponent},
   {path:':ticker', component:ChartComponent}
@@ -44,9 +48,7 @@ const routes: Routes = [
     MatInputModule, MatAutocompleteModule, MatFormFieldModule,
     MatToolbarModule, MatButtonModule, MatDatepickerModule,
     MatNativeDateModule, MatRippleModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts')
-    })
+    NgxEchartsModule.forRoot({echarts: {init}})
   ],
   providers: [],
   bootstrap: [AppComponent]
