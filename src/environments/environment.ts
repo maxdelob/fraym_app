@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url:'http://localhost:3000/'
+  url : 'https://fraymapi.herokuapp.com/',
+  _url:'http://localhost:3000/'
 };
 
 /*
