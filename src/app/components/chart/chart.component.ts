@@ -14,11 +14,11 @@ export class ChartComponent implements OnInit {
   company: Company; 
   data:any;
   options: any;
-  updateOptions: any;
   dates:any = {min:"", max:""};
   dateStartCrt = new FormControl(new Date())
   dateEndCrt = new FormControl(new Date())
-  constructor(private router : Router, private generalService: GeneralService) {}
+  error:boolean= false
+  constructor(private generalService: GeneralService) {}
 
 
   ngOnInit(): void {
@@ -49,10 +49,13 @@ export class ChartComponent implements OnInit {
   dateSelected(e){  
     const start = new Date(this.dateStartCrt.value);
     const end = new Date(this.dateEndCrt.value);
-    this.data = this.data.filter((e)=>{ return e.value[0]>=  this.parseDate(start) &&  e.value[0]<= this.parseDate(end) })
-    this.options = null;
-    this.options = new Chart(this.company.name + ' End of Day US Stock Prices (' + this.parseDate(new Date(this.dates.min)) + ' => ' + this.parseDate(new Date(this.dates.max)) + ')', this.data)
+    this.generalService.getChart(this.company.ticker).subscribe(res => {
+      this.data = res; // TODO: edit end point to allow min & max date. Useless to filter in the front
+      this.data = this.data.filter((e)=>{ return e.value[0]>=  this.parseDate(start) &&  e.value[0]<= this.parseDate(end) })
+      this.options = new Chart(this.company.name + ' End of Day US Stock Prices (' + this.parseDate(start) + ' => ' + this.parseDate(end) + ')', this.data)    
+    })
   }
+ 
 
   parseDate(d){
     return [d.getFullYear(), d.getMonth()+1, d.getDate()].join('/')

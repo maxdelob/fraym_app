@@ -1,0 +1,7 @@
+.container{
+    width: 100%; display: flex; align-content: center; justify-content: center; 
+}
+
+#error{
+    padding-top:5px; padding-bottom:5px; font-style: italic; color: red;
+}
