@@ -6,8 +6,8 @@
   </div>
   <form class="input-container">
     <mat-form-field class="input-form">
-      <mat-label>Number</mat-label>
-      <input  type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="companyControl" [matAutocomplete]="auto">
+      <mat-label>Company name</mat-label>
+      <input  type="text" placeholder="Pick one" aria-label="Company name" matInput [formControl]="companyControl" [matAutocomplete]="auto">
       <mat-autocomplete autoActiveFirstOption (optionSelected)="onSelectedCompany()" #auto>
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
           {{option}}
