@@ -31,7 +31,9 @@ export class InputComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.options.filter(option =>{
+      return option.toLowerCase().includes(filterValue)
+    })
   }
 
   onSelectedCompany(){
