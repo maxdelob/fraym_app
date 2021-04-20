@@ -15,10 +15,11 @@ I used [ngx-echart](https://xieziyu.github.io/ngx-echarts/#/welcome) on the top 
 
 Run `npm start` in the [API](https://github.com/maxdelob/fraym_api) before.  
 
-Run `npm start` 
+Run `ng serve` 
 
 Navigate to `http://localhost:4200/`
 
+Test deployement locally `ng build` + `nmp start` then navigate to `http://localhost:8081/`
 
 ## Useful links for development
 
@@ -27,6 +28,8 @@ Navigate to `http://localhost:4200/`
 [Echart.js examples](https://echarts.apache.org/en/tutorial.html#Get%20Started%20with%20ECharts%20in%205%20minutes)
 
 [ngx-chart example I use](https://xieziyu.github.io/ngx-echarts/#/basic/basic-usage)
+
+[heroku deployement](https://betterprogramming.pub/how-to-deploy-your-angular-9-app-to-heroku-in-minutes-51d171c2f0d)
 
 
 
