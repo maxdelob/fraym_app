@@ -55,7 +55,6 @@ export class ChartComponent implements OnInit {
       this.options = new Chart(this.company.name + ' End of Day US Stock Prices (' + this.parseDate(start) + ' => ' + this.parseDate(end) + ')', this.data)    
     })
   }
- 
 
   parseDate(d){
     return [d.getFullYear(), d.getMonth()+1, d.getDate()].join('/')
