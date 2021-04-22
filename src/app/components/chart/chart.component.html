@@ -1,6 +1,5 @@
 <div style="height: 100%; width: 100%;">
-    <div *ngIf="error" class="container" id="error">The selected period should be greater than 6 months</div>
-    <form class="container" >
+    <form class="container" *ngIf="dates">
         <mat-form-field appearance="fill" style="margin-right: 15px;">
             <mat-label>Start date</mat-label>
             <input [min]="dates.min" [max]="dates.max" matInput [matDatepicker]="pickerStart" (dateChange)="dateSelected($event)" [formControl]="dateStartCrt">
@@ -14,9 +13,27 @@
             <mat-datepicker #pickerEnd></mat-datepicker>
         </mat-form-field> 
     </form>
-    
+
+<div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+    <ngx-charts-line-chart *ngIf='options'
+    [view]="options.view"
+    [scheme]="options.colorScheme"
+    [showXAxisLabel]="options.showXAxisLabel"
+    [showYAxisLabel]="options.showYAxisLabel"
+    [xAxis]="options.xAxis"
+    [yAxis]="options.yAxis"
+    [showGridLines]="options.showGridLines"
+    [xAxisLabel]="options.xAxisLabel"
+    [yAxisLabel]="options.yAxisLabel"
+    [timeline]="options.timeline"
+    [results]="data"
+    [xAxisTickFormatting]='formatXaxis'
+    >
+   </ngx-charts-line-chart>
+   
+
+</div>
     
 
 
-    <div echarts  [options]="options" ></div>
 </div>

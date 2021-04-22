@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Company } from '../models/company.model';
+import { ChartData } from '../models/chart-data.model';
 
 
 
@@ -27,8 +28,8 @@ export class GeneralService {
       return this.http.get(environment.url + "companies");
   }
 
-  getChart(id):Observable<any> {
-    return this.http.get(environment.url + "chart/" + id);
+  getChart(id):Observable<ChartData> {
+    return this.http.get<ChartData>(environment.url + "chart/" + id);
   }
   getChartDates(id){
     return this.http.get(environment.url + "chart/" + id + '/dates');
