@@ -19,7 +19,7 @@ export class InputComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   constructor(private router : Router, private generalService: GeneralService) {}
   ngOnInit(): void {
-    this.generalService.getCompanies().subscribe((res : Company[]) => {
+    this.generalService.getCompanies(null).subscribe((res : Company[]) => {
       this.companies = res;
       this.options = this.companies.map(element => element.name)
       this.filteredOptions = this.companyControl.valueChanges.pipe(

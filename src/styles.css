@@ -1,9 +1,16 @@
 
 
 
-html, body { height: 100%; }
+html, body { height: 100%; background: #673ab7; overflow-x: hidden; overflow-y: hidden;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-toolbar.mat-primary {
     background: #673ab7;
     color: #fff;
+}
+
+#header {
+    display: flex;  justify-content: space-between; flex-direction: row-reverse; 
+}
+#footer{
+    height: 25px; display: flex; font-size: 0.7rem; font-style: italic; position: absolute; bottom: 0;
 }

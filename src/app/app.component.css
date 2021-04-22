@@ -1,6 +1,8 @@
 
   .container {
-    height:calc(100% - 56px - 35px);
+    height:calc(100% - 50px - 35px);
+    overflow-y: auto;
+    overflow-x: auto;
     width: 100%;
     background: #ffefba; 
     background: -webkit-linear-gradient(to right, #ffefba, #ffffff); 

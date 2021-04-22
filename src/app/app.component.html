@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row style="display: flex;  justify-content: space-between; flex-direction: row-reverse; ">
+  <mat-toolbar-row id="header">
     <img  src="../assets/fraymk.png">
     <button mat-button *ngIf='isHomePage()' (click)='returnHome()'>Return</button>
   </mat-toolbar-row>
@@ -7,6 +7,6 @@
 <div class="container">
   <router-outlet ></router-outlet>
 </div>
-<mat-toolbar color="primary" style="height: 25px; display: flex; font-size: 0.7rem; font-style: italic;">
+<mat-toolbar color="primary" id="footer">
   <p>Technical test - Maxime Delobelle</p>
 </mat-toolbar>

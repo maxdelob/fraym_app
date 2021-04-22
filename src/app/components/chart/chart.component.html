@@ -14,7 +14,7 @@
         </mat-form-field> 
     </form>
 
-<div id="chart-container">
+<div id="chart-container" *ngIf="company">
     <ngx-charts-line-chart *ngIf='options'
     [view]="options.view"
     [scheme]="options.colorScheme"

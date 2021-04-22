@@ -24,8 +24,10 @@ export class GeneralService {
     return this.company;
   }
 
-  getCompanies(){
-      return this.http.get(environment.url + "companies");
+  getCompanies(id):Observable<Company[]>{
+    let query = environment.url + "companies"
+    if(id) query = query + "/" + id
+    return this.http.get<Company[]>(query);
   }
 
   getChart(id, min, max):Observable<ChartData> {

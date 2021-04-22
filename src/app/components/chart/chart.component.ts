@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
 import { Subject } from 'rxjs';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { ChartData } from 'src/app/models/chart-data.model';
 import { Company } from 'src/app/models/company.model';
 import { Dates } from 'src/app/models/dates.model';
@@ -24,17 +25,18 @@ export class ChartComponent implements OnInit, OnDestroy {
   dateStartCrt = new FormControl(new Date());
   dateEndCrt = new FormControl(new Date());
   private ngUnsubscribe = new Subject();
-  constructor(private generalService: GeneralService) {}
+  constructor(private router : Router, private generalService: GeneralService) {}
 
   ngOnInit(): void {
     this.company = this.generalService.getCompanySelected();
     if(!this.company){ // reload case 
-      // TODO : create get Company by Id endpoint to get the company for url
-      this.company = new Company('Apple Inc. (AAPL)', 'AAPL')
+      this.generalService.getCompanies(this.router.url.replace("/", '')).subscribe(res =>{  
+        this.company = res[0];
+        this.initDatePicker();
+      })
+    } else{
+      this.initDatePicker();
     }
-   
-    this.initDatePicker();
-    
   }
 
   ngOnDestroy() {
