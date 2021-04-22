@@ -7,8 +7,9 @@ Since I am familiar with it, I use [Angular Material](https://material.angular.i
 
 [Echarts.js](https://echarts.apache.org/en/tutorial.html#Get%20Started%20with%20ECharts%20in%205%20minutes) seemed to be the perfect fit for the study case. 
 
-I used [ngx-echart](https://xieziyu.github.io/ngx-echarts/#/welcome) on the top of it for Angular integration. This library was easy to use, but it started to be tricky when I try to customize some functionalities (ZoomData for example). I will use with parsimony in my next projects. 
+I initially used [ngx-echart](https://xieziyu.github.io/ngx-echarts/#/welcome) on the top of it for Angular integration. Due to production deployement issues and bugs (x-axis, DataZoom), I decided to get rid of it and do not recommend it. 
 
+I finnaly use [ngx-chart](https://github.com/swimlane/ngx-charts) to integrate. It has worked well and was easy to use. 
 
 
 ## Test locally
