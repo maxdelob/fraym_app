@@ -1,3 +1,7 @@
 .container{
     width: 100%; display: flex; align-content: center; justify-content: center; 
 }
+
+#chart-container{
+    display: flex; align-items: center; justify-content: center; width: 100%;
+}

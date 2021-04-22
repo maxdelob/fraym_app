@@ -24,12 +24,7 @@ export class ChartComponent implements OnInit, OnDestroy {
   dateStartCrt = new FormControl(new Date());
   dateEndCrt = new FormControl(new Date());
   private ngUnsubscribe = new Subject();
-
-
-  constructor(private generalService: GeneralService) {
-  
-  }
-
+  constructor(private generalService: GeneralService) {}
 
   ngOnInit(): void {
     this.company = this.generalService.getCompanySelected();
@@ -50,7 +45,7 @@ export class ChartComponent implements OnInit, OnDestroy {
   createChart(){
     this.generalService.getChart(this.company.ticker).subscribe(res => {
       this.data = res;
-      this.options = new Chart(this.data.name);
+      this.options = new Chart(this.data[0].name);
     })    
   }
 
@@ -86,10 +81,5 @@ export class ChartComponent implements OnInit, OnDestroy {
     if(day.length > 2){  day =  "0"+ val } 
     if(month.length > 2){  month =  "0" + val } 
     return day + "/"  +  month;
-  }
-
-  addZero(val){
-    if(val.length > 2){  return 0 + val } 
-    else { return val }
   }
 }
