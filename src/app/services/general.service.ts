@@ -28,8 +28,8 @@ export class GeneralService {
       return this.http.get(environment.url + "companies");
   }
 
-  getChart(id):Observable<ChartData> {
-    return this.http.get<ChartData>(environment.url + "chart/" + id);
+  getChart(id, min, max):Observable<ChartData> {
+    return this.http.get<ChartData>(environment.url + "chart/" + id + "?min=" +min+ "&max=" + max);
   }
   getChartDates(id){
     return this.http.get(environment.url + "chart/" + id + '/dates');

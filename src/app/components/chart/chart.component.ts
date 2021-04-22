@@ -34,7 +34,7 @@ export class ChartComponent implements OnInit, OnDestroy {
     }
    
     this.initDatePicker();
-    this.createChart();
+    
   }
 
   ngOnDestroy() {
@@ -43,7 +43,7 @@ export class ChartComponent implements OnInit, OnDestroy {
   }
 
   createChart(){
-    this.generalService.getChart(this.company.ticker).subscribe(res => {
+    this.generalService.getChart(this.company.ticker, this.dates.min, this.dates.max).subscribe(res => {
       this.data = res;
       this.options = new Chart(this.data[0].name);
     })    
@@ -54,18 +54,16 @@ export class ChartComponent implements OnInit, OnDestroy {
       this.dates = res[0];
       this.dateStartCrt.setValue(new Date(this.dates.min))
       this.dateEndCrt.setValue(new Date(this.dates.max))
+      this.createChart();
     });
     
   }
 
   dateSelected(e){  
-    const start = new Date(this.dateStartCrt.value);
-    const end = new Date(this.dateEndCrt.value);
-    this.generalService.getChart(this.company.ticker).subscribe(res => {
-      this.data = res; // TODO: edit end point to allow min & max date. Useless to filter in the front
-      this.data[0].series = this.data[0].series.filter((e)=>{ 
-        return e.name>=  this.parseDate(start) &&  e.name<= this.parseDate(end) 
-      })
+    const start = this.parseDate(new Date(this.dateStartCrt.value));
+    const end = this.parseDate(new Date(this.dateEndCrt.value));
+    this.generalService.getChart(this.company.ticker, start, end).subscribe(res => {
+      this.data = res;
     })
   }
 
